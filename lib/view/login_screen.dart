@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:unicode_lp_tasks/functions/authfunctions.dart';
 import 'package:unicode_lp_tasks/helper/util.dart';
-import 'package:unicode_lp_tasks/home_screen.dart';
+import 'package:unicode_lp_tasks/view/home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});

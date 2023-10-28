@@ -49,3 +49,38 @@ Widget vSize(double size) {
 Widget hSize(double size) {
   return SizedBox(width: size);
 }
+
+class ModalHelper {
+  String? title;
+  String? images;
+  String? location;
+  Widget? rating;
+  Widget? distance;
+
+  ModalHelper(
+      {required this.title,
+      required this.location,
+      this.distance,
+      this.rating,
+      required this.images});
+}
+
+class Bestforyou {
+  String? title;
+  String? images;
+  String? price;
+  Widget? rating;
+
+  Bestforyou(
+      {required this.title,
+      required this.price,
+      this.rating,
+      required this.images});
+}
+
+class Amenities {
+  String? amenity;
+  Widget? icon;
+
+  Amenities({required this.amenity, required this.icon});
+}

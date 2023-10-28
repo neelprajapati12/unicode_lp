@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:unicode_lp_tasks/helper/util.dart';
-import 'package:unicode_lp_tasks/login_screen.dart';
+import 'package:unicode_lp_tasks/view/login_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
