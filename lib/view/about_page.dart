@@ -2,14 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:unicode_lp_tasks/helper/util.dart';
 
 class AboutPage extends StatefulWidget {
-  final String title;
-  final String images;
-  final String location;
+  final String? title;
+  final String? images;
+  final String? location;
+  final String? price;
 
   AboutPage(
       {required this.title,
       required this.images,
       required this.location,
+      required this.price,
       Key? key})
       : super(key: key);
 
@@ -71,7 +73,7 @@ class _AboutPageState extends State<AboutPage> {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(30),
                       image: DecorationImage(
-                          image: AssetImage("${widget.images}"),
+                          image: NetworkImage("${widget.images}"),
                           fit: BoxFit.fill),
                     ),
                     child: Padding(
@@ -197,7 +199,7 @@ class _AboutPageState extends State<AboutPage> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "Price: \$xxx.xx", // Replace with your price
+                    "${widget.price}", // Replace with your price
                     style: TextStyle(fontSize: 18),
                   ),
                   ElevatedButton(
