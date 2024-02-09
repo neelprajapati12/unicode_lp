@@ -1,11 +1,13 @@
 import 'dart:convert';
-
+import 'dart:ffi';
+import 'dart:io';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:unicode_lp_tasks/helper/util.dart';
 import 'package:unicode_lp_tasks/modal/hotel_modal.dart';
 import 'package:unicode_lp_tasks/view/about_page.dart';
 import 'package:unicode_lp_tasks/view/login_screen.dart';
-import 'package:http/http.dart' as http;
+import "package:http/http.dart" as http;
 
 class HomeScreen extends StatefulWidget {
   final username;
@@ -25,20 +27,20 @@ class _HomeScreenState extends State<HomeScreen> {
   gethoteldata() async {
     try {
       var hoteldata = await http.post(
-          Uri.parse("https://worldwide-hotels.p.rapidapi.com/search"),
-          headers: {
-            'content-type': 'application/x-www-form-urlencoded',
-            'X-RapidAPI-Key':
-                '574a8153e3msheb9434bafb5bbfap1fa950jsnc5a748f9886e',
-            'X-RapidAPI-Host': 'worldwide-hotels.p.rapidapi.com',
-          },
-          body: {
-            'location_id': '45963',
-            'language': 'en_US',
-            'currency': 'USD',
-            'offset': '0',
-          });
-
+        Uri.parse("https://worldwide-hotels.p.rapidapi.com/search"),
+        headers: {
+          'content-type': 'application/x-www-form-urlencoded',
+          'X-RapidAPI-Key':
+              '574a8153e3msheb9434bafb5bbfap1fa950jsnc5a748f9886e',
+          'X-RapidAPI-Host': 'worldwide-hotels.p.rapidapi.com',
+        },
+        body: {
+          'location_id': '45963',
+          'language': 'en_US',
+          'currency': 'USD',
+          'offset': '0',
+        },
+      );
       if (hoteldata.statusCode == 200) {
         var response = jsonDecode(hoteldata.body);
         print(response);
@@ -58,6 +60,14 @@ class _HomeScreenState extends State<HomeScreen> {
       print(e);
     }
   }
+
+  // addwishlist() {
+  //   UploadTask uploadTask = FirebaseStorage.instance
+  //       .ref()
+  //       .child('images')
+  //       .child('File 1')
+  //       .putFile(File(SelectedPicture.value));
+  // }
 
   @override
   void initState() {
@@ -90,6 +100,7 @@ class _HomeScreenState extends State<HomeScreen> {
       body: hotels!.isEmpty
           ? Center(child: CircularProgressIndicator())
           : SingleChildScrollView(
+              physics: BouncingScrollPhysics(),
               child: Column(
                 children: [
                   Row(
@@ -231,6 +242,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   Container(
                     height: 400,
                     child: ListView.builder(
+                      physics: BouncingScrollPhysics(),
                       itemCount: hotels!.length,
                       itemBuilder: (context, index) {
                         return Padding(

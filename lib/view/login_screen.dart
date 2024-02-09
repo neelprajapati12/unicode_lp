@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:unicode_lp_tasks/functions/authfunctions.dart';
 import 'package:unicode_lp_tasks/helper/util.dart';
+import 'package:unicode_lp_tasks/view/home.dart';
 import 'package:unicode_lp_tasks/view/home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -116,8 +117,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) =>
-                                        HomeScreen(username: name.text)));
+                                    builder: (context) => Home()));
                           }
                           setState(() {});
                         },
